@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:track_money_app/core/router/AppPath.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key, required this.navigateToAddExpense});
@@ -17,24 +19,62 @@ class HomeScreen extends StatelessWidget {
         children: [
           const Spacer(),
           Container(
-            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+            padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Container(
-                  color: Colors.red,
-                  child: const Text(
-                    "+",
-                    style: TextStyle(color: Colors.black),
+                Expanded(
+                  child: Container(
+                    alignment: Alignment.center,
+                    color: Colors.green.shade300,
+                    width: double.infinity * 0.2,
+                    height: 48,
+                    child: const Text(
+                      "+",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 32,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
                   ),
                 ),
-                const Text(
-                  "-",
-                  style: TextStyle(color: Colors.black),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      context.pushNamed(AppPath.addExpenseScreen);
+                    },
+                    child: Container(
+                      color: Colors.red.shade300,
+                      alignment: Alignment.center,
+                      width: double.infinity * 0.2,
+                      height: 48,
+                      child: const Text(
+                        "-",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 32,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
-                const Text(
-                  "Tr",
-                  style: TextStyle(color: Colors.black),
+                Expanded(
+                  child: Container(
+                    color: Colors.yellow.shade300,
+                    alignment: Alignment.center,
+                    width: double.infinity * 0.2,
+                    height: 48,
+                    child: const Text(
+                      "Tr",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 32,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                  ),
                 )
               ],
             ),

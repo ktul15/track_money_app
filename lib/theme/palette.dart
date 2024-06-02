@@ -26,7 +26,7 @@ class Pallete {
       titleTextStyle:
           const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
       iconTheme: const IconThemeData(
-        color: greyColor,
+        color: whiteColor,
       ),
     ),
     drawerTheme: const DrawerThemeData(
@@ -44,7 +44,7 @@ class Pallete {
       backgroundColor: whiteColor,
       elevation: 0,
       iconTheme: IconThemeData(
-        color: blackColor,
+        color: whiteColor,
       ),
     ),
     drawerTheme: const DrawerThemeData(

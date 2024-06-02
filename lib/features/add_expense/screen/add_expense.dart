@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:track_money_app/core/providers/firebase_providers.dart';
+import 'package:track_money_app/core/router/AppPath.dart';
 import 'package:track_money_app/features/add_expense/controller/add_expense_controller.dart';
 import 'package:track_money_app/features/add_expense/models/expense.dart';
 import 'package:track_money_app/features/auth/controller/auth_controller.dart';
@@ -70,6 +72,28 @@ class AddExpense extends ConsumerWidget {
                     .update((state) => value);
               },
               decoration: const InputDecoration(label: Text("Description")),
+            ),
+            const SizedBox(
+              height: 12,
+            ),
+            GestureDetector(
+              onTap: () {
+                context.pushNamed(AppPath.categoryListScreen);
+              },
+              child: const Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Category",
+                    style: TextStyle(color: Pallete.blackColor),
+                  ),
+                  Icon(
+                    Icons.arrow_forward_outlined,
+                    color: Colors.black,
+                  ),
+                ],
+              ),
             ),
             const SizedBox(
               height: 16,

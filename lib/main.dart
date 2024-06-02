@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:routemaster/routemaster.dart';
 import 'package:track_money_app/core/router/router.dart';
 import 'package:track_money_app/features/auth/models/user.dart';
 import 'package:track_money_app/theme/palette.dart';
@@ -44,23 +43,25 @@ class _MyAppState extends ConsumerState<MyApp> {
   @override
   Widget build(BuildContext context) {
     return ref.watch(authStateChangeProvider).when(
-          data: (data) => MaterialApp.router(
-            debugShowCheckedModeBanner: false,
-            title: 'Track It!',
-            theme: ref.read(themeNotifierProvider),
-            routerDelegate: RoutemasterDelegate(
-              routesBuilder: (context) {
-                if (data != null) {
-                  getData(ref, data);
-                  if (userModel != null) {
-                    return loggedInRoute;
-                  }
-                }
-                return loggedOutRoute;
-              },
-            ),
-            routeInformationParser: const RoutemasterParser(),
-          ),
+          data: (data) {
+            if (data != null) {
+              getData(ref, data);
+              if (userModel != null) {
+                return MaterialApp.router(
+                  debugShowCheckedModeBanner: false,
+                  title: 'Track It!',
+                  theme: ref.read(themeNotifierProvider),
+                  routerConfig: loggedInRoute,
+                );
+              }
+            }
+            return MaterialApp.router(
+              debugShowCheckedModeBanner: false,
+              title: 'Track It!',
+              theme: ref.read(themeNotifierProvider),
+              routerConfig: loggedOutRoute,
+            );
+          },
           error: (error, stackTrace) => ErrorText(error: error.toString()),
           loading: () => const Loader(),
         );
