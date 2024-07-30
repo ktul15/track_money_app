@@ -1,0 +1,6 @@
+arb-dir: lib/src/l10n
+template-arb-file: messages_en.arb
+output-localization-file: homeScreenLocalizations.dart
+output-class: HomeScreenLocalizations
+nullable-getter: false
+synthetic-package: false

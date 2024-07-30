@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:track_money_app/theme/palette.dart';
+import 'package:theme/theme.dart';
 
 class CategoryList extends StatelessWidget {
   const CategoryList({super.key});

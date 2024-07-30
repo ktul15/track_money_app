@@ -1,14 +1,13 @@
+import 'package:add_transaction/add_expense.dart';
+import 'package:core/core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:track_money_app/core/router/router.dart';
-import 'package:track_money_app/features/auth/models/user.dart';
-import 'package:track_money_app/theme/palette.dart';
+import 'package:home/home.dart';
+import 'package:login/login.dart';
+import 'package:theme/theme.dart';
 
-import 'core/common/error_text.dart';
-import 'core/common/loader.dart';
-import 'features/auth/controller/auth_controller.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -50,6 +49,11 @@ class _MyAppState extends ConsumerState<MyApp> {
                 return MaterialApp.router(
                   debugShowCheckedModeBanner: false,
                   title: 'Track It!',
+                  localizationsDelegates: const [
+                    HomeScreenLocalizations.delegate,
+                    LoginScreenLocalizations.delegate,
+                    AddExpenseScreenLocalizations.delegate,
+                  ],
                   theme: ref.read(themeNotifierProvider),
                   routerConfig: loggedInRoute,
                 );
@@ -58,6 +62,11 @@ class _MyAppState extends ConsumerState<MyApp> {
             return MaterialApp.router(
               debugShowCheckedModeBanner: false,
               title: 'Track It!',
+              localizationsDelegates: const [
+                HomeScreenLocalizations.delegate,
+                LoginScreenLocalizations.delegate,
+                AddExpenseScreenLocalizations.delegate,
+              ],
               theme: ref.read(themeNotifierProvider),
               routerConfig: loggedOutRoute,
             );
